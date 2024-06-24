@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     private void Spawn()
     {
         Pipes pipes = Instantiate(prefab, transform.position, Quaternion.identity);
+        pipes.transform.SetParent(transform);
         pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         pipes.gap = verticalGap;
     }

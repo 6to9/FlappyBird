@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -12,8 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameOver;
 
-    private int score;
-    public int Score => score;
+    public int Score { get; private set; }
 
     private void Awake()
     {
@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
-        score = 0;
-        scoreText.text = score.ToString();
+        Score = 0;
+        scoreText.text = Score.ToString();
 
         playButton.SetActive(false);
         gameOver.SetActive(false);
@@ -41,9 +41,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         player.enabled = true;
 
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
+        List<Pipes> pipes = new();
 
-        for (int i = 0; i < pipes.Length; i++) {
+        for (int i = 0; i < spawner.transform.childCount; i++)
+        {
+            pipes.Add(spawner.transform.GetChild(i).GetComponent<Pipes>());
+        }
+
+        for (int i = 0; i < pipes.Count; i++)
+        {
             Destroy(pipes[i].gameObject);
         }
     }
@@ -64,8 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseScore()
     {
-        score++;
-        scoreText.text = score.ToString();
+        Score++;
+        scoreText.text = Score.ToString();
     }
-
 }
