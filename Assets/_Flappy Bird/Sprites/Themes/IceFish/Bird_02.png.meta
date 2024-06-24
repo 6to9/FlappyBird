@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bird_02_0: 4125150189441033765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
