@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -20,37 +19,36 @@ public class GameManager : MonoBehaviour
         if (Instance != null)
         {
             DestroyImmediate(gameObject);
+            return;
         }
-        else
-        {
-            Instance = this;
-            Application.targetFrameRate = 60;
-            DontDestroyOnLoad(gameObject);
-            Pause();
-        }
+
+        Instance = this;
+        Application.targetFrameRate = 60;
+        DontDestroyOnLoad(gameObject);
+        Pause();
     }
 
     public void Play()
     {
         Score = 0;
         scoreText.text = Score.ToString();
-
         playButton.SetActive(false);
         gameOver.SetActive(false);
 
+        ResetPipes();
+
         Time.timeScale = 1f;
         player.enabled = true;
+    }
 
-        List<Pipes> pipes = new();
-
-        for (int i = 0; i < spawner.transform.childCount; i++)
+    private void ResetPipes()
+    {
+        foreach (Transform child in spawner.transform)
         {
-            pipes.Add(spawner.transform.GetChild(i).GetComponent<Pipes>());
-        }
-
-        for (int i = 0; i < pipes.Count; i++)
-        {
-            Destroy(pipes[i].gameObject);
+            if (child.gameObject.activeInHierarchy)
+            {
+                ObjectPool.Instance.ReleasePooledObject(child.GetComponent<Pipes>());
+            }
         }
     }
 
