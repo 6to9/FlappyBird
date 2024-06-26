@@ -4,6 +4,7 @@ using UnityEngine.Pool;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool Instance { get; private set; }
+
     public Pipes objectToPool;
     public int initialPoolSize = 5;
 

@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: -1950882278551976490
     second: GetReady_0
-  - first:
-      213: 425846413113190463
-    second: GetReady_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -132,10 +129,10 @@ TextureImporter:
       name: GetReady_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 3
-        width: 33
-        height: 22
+        width: 87
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,28 +143,6 @@ TextureImporter:
       bones: []
       spriteID: 6d50e4467e21de4e0800000000000000
       internalID: -1950882278551976490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GetReady_1
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 0
-        width: 59
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f386c767e09e8e500800000000000000
-      internalID: 425846413113190463
       vertices: []
       indices: 
       edges: []
@@ -185,7 +160,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       GetReady_0: -1950882278551976490
-      GetReady_1: 425846413113190463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

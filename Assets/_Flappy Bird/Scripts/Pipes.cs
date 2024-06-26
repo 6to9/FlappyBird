@@ -29,7 +29,7 @@ public class Pipes : MonoBehaviour
 
     private void ResetPipes()
     {
-        top.localPosition = new Vector3(0f, 3.25f, 0f);
-        bottom.localPosition = new Vector3(0f, -3.25f, 0f);
+        top.localPosition = new Vector3(0f, 2.25f, 0f);
+        bottom.localPosition = new Vector3(0f, -2.25f, 0f);
     }
 }
