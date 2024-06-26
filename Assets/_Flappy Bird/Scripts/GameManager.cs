@@ -12,39 +12,43 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameOver;
 
-    private int score;
-    public int Score => score;
+    public int Score { get; private set; }
 
     private void Awake()
     {
         if (Instance != null)
         {
             DestroyImmediate(gameObject);
+            return;
         }
-        else
-        {
-            Instance = this;
-            Application.targetFrameRate = 60;
-            DontDestroyOnLoad(gameObject);
-            Pause();
-        }
+
+        Instance = this;
+        Application.targetFrameRate = 60;
+        DontDestroyOnLoad(gameObject);
+        Pause();
     }
 
     public void Play()
     {
-        score = 0;
-        scoreText.text = score.ToString();
-
+        Score = 0;
+        scoreText.text = Score.ToString();
         playButton.SetActive(false);
         gameOver.SetActive(false);
 
+        ResetPipes();
+
         Time.timeScale = 1f;
         player.enabled = true;
+    }
 
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
-
-        for (int i = 0; i < pipes.Length; i++) {
-            Destroy(pipes[i].gameObject);
+    private void ResetPipes()
+    {
+        foreach (Transform child in spawner.transform)
+        {
+            if (child.gameObject.activeInHierarchy)
+            {
+                ObjectPool.Instance.ReleasePooledObject(child.GetComponent<Pipes>());
+            }
         }
     }
 
@@ -64,8 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseScore()
     {
-        score++;
-        scoreText.text = score.ToString();
+        Score++;
+        scoreText.text = Score.ToString();
     }
-
 }
