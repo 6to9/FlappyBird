@@ -1,5 +1,5 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Player player;
     [SerializeField] private Spawner spawner;
-    [SerializeField] private Text scoreText;
+    [SerializeField] private TMP_Text scoreText;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameOver;
 
